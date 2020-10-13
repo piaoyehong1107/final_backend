@@ -14,9 +14,6 @@ class ApplicationController < ActionController::API
       nil
     end
   end
-
-     
     # logger.debug "============> auth token"
     # logger.debug auth_header
-  
 end
