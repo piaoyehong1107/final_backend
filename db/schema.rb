@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_10_09_195046) do
   create_table "friendships", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "friend_id"
+    t.string "friend_username"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_friendships_on_user_id"

@@ -2,13 +2,12 @@ class FriendshipsController < ApplicationController
     
     def index
         if current_user
-            friends=[]
+            friendships=[]
             friendships=current_user.friendships
-            friendships.map{|friendship|friends.push(User.find_by(id: friendship.friend_id))}
-            render :json=>friends.as_json(only: [:id, :username])
-            # logger.debug "============>"
-            # logger.debug friends
-            friends.clear
+            render :json=>friendships.as_json()
+            
+            logger.debug "============>"
+            logger.debug friendships
         end
     end
     def create
@@ -17,7 +16,7 @@ class FriendshipsController < ApplicationController
             friendIds=[]
             friendships.map{|friend|puts friendIds.push(friend[:friend_id])}
             if friendIds.exclude?(params[:user2_id])
-                newFriendship=Friendship.create(user_id: current_user.id, friend_id: params[:user2_id])
+                newFriendship=Friendship.create(user_id: current_user.id, friend_id: params[:user2_id], friend_username: params[:friend_username])
                 render :json=>newFriendship.as_json()
                 friendIds.clear
             else
