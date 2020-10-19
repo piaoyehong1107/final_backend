@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:password]) 
             payload={user_id: @user.id}
             token=JWT.encode(payload,'123','HS256')
-            render :json=>{auth_key: token}
+            render :json=>{auth_key: token, user: @user.username}
         else
             render :json=>{"error"=> "Sorry, username and password do not match"}
         end
