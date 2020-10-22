@@ -16,7 +16,7 @@ class FriendshipsController < ApplicationController
             friendIds=[]
             friendships.map{|friend|puts friendIds.push(friend[:friend_id])}
             if friendIds.exclude?(params[:user2_id])
-                newFriendship=Friendship.create(user_id: current_user.id, friend_id: params[:user2_id], friend_username: params[:friend_username])
+                newFriendship=Friendship.create(user_id: current_user.id, friend_id: params[:user2_id], friend_username: params[:friend_username], friend_photoId: params[:friend_photoId])
                 render :json=>newFriendship.as_json()
                 friendIds.clear
             else

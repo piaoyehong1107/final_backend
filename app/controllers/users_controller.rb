@@ -10,7 +10,7 @@ class UsersController < ApplicationController
                 if @user==[]
                     render :json=>{"error": "Can not find user"}
                 else 
-                    render :json=>@user.as_json(only: [:id, :username])
+                    render :json=>@user.as_json(only: [:id, :username, :email, :photo_id])
                 end
             end
         else 
@@ -34,6 +34,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username,:password)
+        params.require(:user).permit(:username,:password,:email,:photo_id)
     end
 end

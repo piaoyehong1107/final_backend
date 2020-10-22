@@ -4,6 +4,7 @@ class CreateFriendships < ActiveRecord::Migration[6.0]
       t.references :user
       t.integer :friend_id
       t.string :friend_username
+      t.string :friend_photoId
 
       t.timestamps
     end

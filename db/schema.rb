@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_10_09_195046) do
     t.bigint "user_id"
     t.integer "friend_id"
     t.string "friend_username"
+    t.string "friend_photoId"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_friendships_on_user_id"
@@ -27,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_10_09_195046) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
+    t.string "email"
+    t.string "photo_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
